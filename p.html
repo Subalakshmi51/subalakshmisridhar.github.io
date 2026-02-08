@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subalakshmi Sridhar | Full Stack Developer Intern</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #7c3aed;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --accent: #06b6d4;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f0f9ff 0%, #fef2ff 100%);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-radius: 0 0 20px 20px;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 5rem 0;
+            text-align: center;
+            background: white;
+            border-radius: 20px;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+        
+        .tagline {
+            font-size: 1.5rem;
+            color: #64748b;
+            margin-bottom: 2rem;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, rgba(37, 99, 235, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+        }
+        
+        /* Projects Section */
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        }
+        
+        .project-header {
+            padding: 1.5rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+        }
+        
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-role {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .project-body {
+            padding: 1.5rem;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        
+        .tech-tag {
+            background: #e2e8f0;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .impact-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.7rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .impact-point::before {
+            content: '✓';
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .skill-category h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .skill-item {
+            margin-bottom: 1rem;
+        }
+        
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.3rem;
+        }
+        
+        .skill-bar {
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .skill-level {
+            height: 100%;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 4px;
+        }
+        
+        /* Timeline Section */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 3rem auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-content {
+            padding: 1.5rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .timeline-date {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            border-radius: 20px 20px 0 0;
+            margin-top: 4rem;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .contact-link {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-link:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">Subalakshmi Sridhar</div>
+            <nav class="nav-links">
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#experience">Experience</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Full Stack Developer & AI Enthusiast</h1>
+            <p class="tagline">Building intelligent solutions that bridge <span class="highlight">technology</span> and <span class="highlight">human impact</span></p>
+            <p>B.Tech Computer Science student with 7.95 CGPA, passionate about creating scalable web applications and AI-powered platforms. Led teams to build real-world solutions with measurable impact.</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">
+                    <i class="fas fa-paper-plane"></i> Contact Me
+                </a>
+            </div>
+        </section>
+        
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Textile Collaborative Network</h3>
+                        <p class="project-role">Team Lead | Python, Full Stack</p>
+                    </div>
+                    <div class="project-body">
+                        <p>An AI-powered multilingual platform connecting fashion designers, tailors, and artisans to promote sustainable fashion.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">AI/ML</span>
+                            <span class="tech-tag">Frontend</span>
+                            <span class="tech-tag">Backend</span>
+                            <span class="tech-tag">Team Leadership</span>
+                        </div>
+                        <div class="impact-points">
+                            <div class="impact-point">Led a team of 4 to conceptualize and develop the platform from scratch</div>
+                            <div class="impact-point">Designed responsive frontend interfaces with intuitive user experience</div>
+                            <div class="impact-point">Implemented backend logic in Python for seamless platform operations</div>
+                            <div class="impact-point">Focused on empowering women artisans through technology access</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Water Quality AI Chatbot</h3>
+                        <p class="project-role">Solo Project | Python, Streamlit</p>
+                    </div>
+                    <div class="project-body">
+                        <p>An intelligent assistant with monitoring dashboard that analyzes water quality parameters and provides real-time alerts.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Streamlit</span>
+                            <span class="tech-tag">Data Visualization</span>
+                            <span class="tech-tag">Real-time Alerts</span>
+                            <span class="tech-tag">Dashboard</span>
+                        </div>
+                        <div class="impact-points">
+                            <div class="impact-point">Built a smart assistant that explains water quality based on user inputs (pH, turbidity, TDS)</div>
+                            <div class="impact-point">Developed interactive dashboard with real-time data visualization</div>
+                            <div class="impact-point">Implemented sound alarm system triggered by contamination thresholds</div>
+                            <div class="impact-point">Enabled manual input with instant analysis and safety recommendations</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 - Added to show more depth -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">AI-Powered Resume Analyzer</h3>
+                        <p class="project-role">Full Stack Project | JavaScript, Python</p>
+                    </div>
+                    <div class="project-body">
+                        <p>A web application that uses NLP to analyze resumes and provide optimization suggestions for job seekers.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">NLP</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">API Integration</span>
+                        </div>
+                        <div class="impact-points">
+                            <div class="impact-point">Built responsive frontend with React for intuitive user interaction</div>
+                            <div class="impact-point">Developed RESTful API with Python Flask for resume processing</div>
+                            <div class="impact-point">Implemented NLP techniques for keyword extraction and analysis</div>
+                            <div class="impact-point">Created actionable insights dashboard with improvement suggestions</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Skills Section -->
+        <section id="skills">
+            <div class="skills-container">
+                <h2 class="section-title">Technical Proficiency</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Frontend Development</h3>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>HTML/CSS</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>JavaScript</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Responsive Design</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Backend & Databases</h3>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Python</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Java</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Database Management</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Tools & Technologies</h3>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Git & Version Control</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>AI/ML Concepts</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Software Testing</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Experience & Timeline -->
+        <section id="experience">
+            <h2 class="section-title">Experience & Education</h2>
+            <div class="timeline">
+                <!-- Education 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2023 - 2027</div>
+                        <h3>B.Tech Computer Science & Business Systems</h3>
+                        <p>M. Kumarasamy College of Engineering | CGPA: 7.95</p>
+                        <p>Relevant coursework: Data Structures, OOP, DBMS, Operating Systems, Web Technologies, AI/ML Fundamentals</p>
+                    </div>
+                </div>
+                
+                <!-- Internship 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">June 2025 - July 2025</div>
+                        <h3>Web Development Intern</h3>
+                        <p>Sky Park</p>
+                        <p>Gained hands-on experience in frontend development, responsive design, and web architecture. Built user-friendly interfaces using HTML, CSS, JavaScript with backend integration.</p>
+                    </div>
+                </div>
+                
+                <!-- Freelance -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">June 2023 - August 2023</div>
+                        <h3>Freelance Digital Marketer</h3>
+                        <p>iDigitalPreneur</p>
+                        <p>Managed marketing funnels, content campaigns, and social media growth for clients across various niches. Developed strategic communication and analytics skills.</p>
+                    </div>
+                </div>
+                
+                <!-- Achievement -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2024</div>
+                        <h3>Achievements & Certifications</h3>
+                        <p>• Led AI-based innovation project selected for college-level demo presentations</p>
+                        <p>• Second prize in Technical Events and SIH Internal Hackathon</p>
+                        <p>• Certified in Cloud Computing, Software Testing & Cybersecurity</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer & Contact -->
+    <footer id="contact">
+        <div class="container">
+            <h2 style="color: white; margin-bottom: 1rem;">Let's Connect!</h2>
+            <p style="max-width: 600px; margin: 0 auto 2rem; opacity: 0.9;">Currently seeking Full Stack Development internships for 2025. Passionate about creating impactful software solutions with modern technologies.</p>
+            
+            <div class="contact-links">
+                <a href="tel:+916382802360" class="contact-link">
+                    <i class="fas fa-phone"></i> +91 6382802360
+                </a>
+                <a href="mailto:subalakshmisridharofficial@gmail.com" class="contact-link">
+                    <i class="fas fa-envelope"></i> Email
+                </a>
+                <a href="https://www.linkedin.com/in/subalakshmi-sridhar-3907292b6/" class="contact-link" target="_blank">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="https://github.com/Subalakshmi51" class="contact-link" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://maps.google.com/?q=Manapparai,Trichy" class="contact-link" target="_blank">
+                    <i class="fas fa-map-marker-alt"></i> Manapparai, Trichy
+                </a>
+            </div>
+            
+            <p style="margin-top: 3rem; opacity: 0.7;">© 2025 Subalakshmi Sridhar. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add animation to skill bars on scroll
+        const observerOptions = {
+            threshold: 0.5
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    const skillBars = entry.target.querySelectorAll('.skill-level');
+                    skillBars.forEach(bar => {
+                        const width = bar.style.width;
+                        bar.style.width = '0';
+                        setTimeout(() => {
+                            bar.style.transition = 'width 1.5s ease-in-out';
+                            bar.style.width = width;
+                        }, 200);
+                    });
+                }
+            });
+        }, observerOptions);
+        
+        // Observe skills section
+        const skillsSection = document.getElementById('skills');
+        if(skillsSection) {
+            observer.observe(skillsSection);
+        }
+    </script>
+</body>
+</html>
